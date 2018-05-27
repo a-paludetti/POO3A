@@ -5,15 +5,25 @@
  */
 package com.senac.br.Telas;
 
+import java.awt.Dimension;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
- * @author Red
+ * @author Aline Paludetti de Oliveira
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    //Menus
+    CadastroConta menuCadastroConta = null;
+//    ConsultaCliente menuConsCli = null;
+//    CadastroProduto menuCadProduto = null;
+//    ConsultaProduto menuConsProd = null;
+//    Vendas menuVenda = null;
+//    Relatorio novoRel = null;
+
     public Principal() {
         initComponents();
     }
@@ -38,13 +48,13 @@ public class Principal extends javax.swing.JFrame {
         jMenuEdit = new javax.swing.JMenu();
         jMenuEditarConta = new javax.swing.JMenuItem();
         jMenuEditarPessoa = new javax.swing.JMenuItem();
-        jMenuProcura = new javax.swing.JMenu();
         jMenuRelatorio = new javax.swing.JMenu();
         jMenuRelatorioDiario = new javax.swing.JMenuItem();
         jMenuRelatorioSemanal = new javax.swing.JMenuItem();
         jMenuRelatorioMensal = new javax.swing.JMenuItem();
         jMenuUser = new javax.swing.JMenu();
         Cadastro = new javax.swing.JMenuItem();
+        jMenuProcura = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,7 +89,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonContasPagarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonContasReceberDia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(540, Short.MAX_VALUE))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +98,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButtonContasPagarDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonContasReceberDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(502, Short.MAX_VALUE))
         );
 
         jMenuArquivo.setText("Arquivo");
@@ -134,9 +144,6 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuEdit);
 
-        jMenuProcura.setText("Procura");
-        jMenuBar1.add(jMenuProcura);
-
         jMenuRelatorio.setText("Relatórios");
 
         jMenuRelatorioDiario.setText("Relatório Diário");
@@ -152,10 +159,13 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuUser.setText("Usuário");
 
-        Cadastro.setText("Verificar Conta");
+        Cadastro.setText("Atualizar");
         jMenuUser.add(Cadastro);
 
         jMenuBar1.add(jMenuUser);
+
+        jMenuProcura.setText("Procura");
+        jMenuBar1.add(jMenuProcura);
 
         setJMenuBar(jMenuBar1);
 
@@ -183,6 +193,21 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuNovaContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNovaContaActionPerformed
         // TODO add your handling code here:
+        if (menuCadastroConta == null || !menuCadastroConta.isVisible()) {
+            menuCadastroConta = new CadastroConta();
+            jDesktopPane1.add(menuCadastroConta);
+            menuCadastroConta.setVisible(true);
+        } else if (menuCadastroConta.isVisible()) {
+            try {
+                menuCadastroConta.setSelected(true);
+            } catch (PropertyVetoException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            menuCadastroConta.getDesktopPane().getDesktopManager().deiconifyFrame(menuCadastroConta);
+            menuCadastroConta.getDesktopPane().getDesktopManager().maximizeFrame(menuCadastroConta);
+            menuCadastroConta.getDesktopPane().getDesktopManager().minimizeFrame(menuCadastroConta);
+            menuCadastroConta.toFront();
+        }
     }//GEN-LAST:event_jMenuNovaContaActionPerformed
 
     private void jButtonContasPagarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContasPagarDiaActionPerformed

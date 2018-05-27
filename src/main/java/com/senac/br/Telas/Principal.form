@@ -55,11 +55,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuProcura">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Procura"/>
-          </Properties>
-        </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuRelatorio">
           <Properties>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
@@ -89,10 +84,15 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Cadastro">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Verificar Conta"/>
+                <Property name="text" type="java.lang.String" value="Atualizar"/>
               </Properties>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenuProcura">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Procura"/>
+          </Properties>
         </Menu>
       </SubComponents>
     </Menu>
@@ -146,7 +146,7 @@
                       <Component id="jButtonContasPagarDia" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                       <Component id="jButtonContasReceberDia" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="260" max="32767" attributes="0"/>
+                  <EmptySpace pref="540" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,7 +157,7 @@
                   <Component id="jButtonContasPagarDia" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButtonContasReceberDia" min="-2" pref="50" max="-2" attributes="0"/>
-                  <EmptySpace pref="181" max="32767" attributes="0"/>
+                  <EmptySpace pref="502" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
