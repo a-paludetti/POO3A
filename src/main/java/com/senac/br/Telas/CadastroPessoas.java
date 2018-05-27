@@ -60,6 +60,12 @@ public class CadastroPessoas extends javax.swing.JInternalFrame {
         jLabelemail = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setTitle("Cadastro de Clientes e Beneficiarios");
+
         jLabelData.setText("Data:");
 
         jTextField1.setEditable(false);
