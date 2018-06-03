@@ -1,44 +1,53 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.senac.br.model;
+
+import java.util.Date;
 
 /**
  *
  * @author Aline Paludetti de Oliveira
  */
-public abstract class Conta {
+public class Conta {
 
     private String descricao;
-    private int notafiscal;
+    private Date dataVencimento;
+    private Date dataCadastro;
     private String nome;
-    private String endereco;
-    private int tipo;
+    private String tipo;
     private float valor;
+    private boolean Disabled;
 
-    public Conta(String nome, String endereco, String descricao) {
+    //Contrutor da Conta padrão
+    public Conta(String descricao, Date dataVencimento, Date dataCadastro, String nome, float valor) {
+        this.dataCadastro = dataCadastro;
+        this.dataVencimento = dataVencimento;
         this.descricao = descricao;
-        this.endereco = endereco;
         this.nome = nome;
+        this.valor = valor;
     }
 
-    //Nota Fiscal é opcional
-    public int getNotafiscal() {
-        return notafiscal;
-    }
-
-    public void setNotafiscal(int notafiscal) {
-        this.notafiscal = notafiscal;
-    }
-    
-        public String getDescricao() {
+    // métodos Get/Set
+    public String getDescricao() {
         return descricao;
     }
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Date getDataVencimento() {
+        return dataVencimento;
+    }
+
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+
+    public Date getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getNome() {
@@ -49,16 +58,26 @@ public abstract class Conta {
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setTipo(String tipo) {
+        if (tipo.equalsIgnoreCase("Pessoa Fisica")) {
+            // ContaPessoaFisica.criarConta();
+        }
+        if (tipo.equalsIgnoreCase("Pessoa Jurídica")) {
+            //ContaPessoaJuridica.criarConta();
+        }
+
+        this.tipo = tipo;
     }
 
-    //tanto tipo como valor são tipos abstratos, tratados em suas respectivas classes.
-    public abstract int tipo();
+    public float getValor() {
+        return valor;
+    }
 
-    public abstract float valor();
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 }

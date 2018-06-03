@@ -1,12 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.senac.br.Telas;
 
 import com.senac.br.model.DataSistema;
-import java.awt.Dimension;
+import com.senac.br.model.ContaPessoaFisica;
+import java.text.ParseException;
+import java.time.Instant;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Formatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -68,7 +70,7 @@ public class CadastroConta extends javax.swing.JInternalFrame {
         jFormattedVencimento = new javax.swing.JFormattedTextField();
         jLabelParcela = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jFormattedTextFieldValue = new javax.swing.JFormattedTextField();
+        jFormattedTextValor = new javax.swing.JFormattedTextField();
         jTextFieldParcela = new javax.swing.JTextField();
         jButtonCancel = new javax.swing.JButton();
         jButtonSave = new javax.swing.JButton();
@@ -231,7 +233,7 @@ public class CadastroConta extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Valor*:");
 
-        jFormattedTextFieldValue.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
+        jFormattedTextValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
         jTextFieldParcela.setText("1");
 
@@ -243,6 +245,11 @@ public class CadastroConta extends javax.swing.JInternalFrame {
         });
 
         jButtonSave.setText("Salvar");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
+            }
+        });
 
         jButtonSearch.setText(" ... ");
 
@@ -286,7 +293,7 @@ public class CadastroConta extends javax.swing.JInternalFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jFormattedTextFieldValue, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jFormattedTextValor, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                                             .addComponent(jLabelParcela))
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -350,7 +357,7 @@ public class CadastroConta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelParcela)
                     .addComponent(jLabel2)
-                    .addComponent(jFormattedTextFieldValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jFormattedTextValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldParcela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,6 +396,20 @@ public class CadastroConta extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+        //String descricao, DataSistema dataVencimento, DataSistema dataCadastro, String nome, float valor
+
+        String descricao = jTextArea1.getText();
+        Date dataC = Date.from(Instant.now());
+        Date dataV = null;
+        String nome = jTextFieldNome.getText();
+        float valor = Float.parseFloat(jFormattedTextValor.getText());
+
+        ContaPessoaFisica conta = new ContaPessoaFisica(descricao, dataV, dataC, nome, valor);
+
+    }//GEN-LAST:event_jButtonSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;
@@ -396,7 +417,7 @@ public class CadastroConta extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonSearch;
     private javax.swing.JComboBox<String> jComboBoxTipoConta;
     private javax.swing.JComboBox<String> jComboBoxUF;
-    private javax.swing.JFormattedTextField jFormattedTextFieldValue;
+    private javax.swing.JFormattedTextField jFormattedTextValor;
     private javax.swing.JFormattedTextField jFormattedVencimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -435,4 +456,8 @@ public class CadastroConta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextFieldPessoa;
     private javax.swing.JTextField jTextFieldRua;
     // End of variables declaration//GEN-END:variables
+
+    private String toString(int selectedIndex) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
