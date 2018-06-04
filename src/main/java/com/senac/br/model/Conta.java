@@ -15,14 +15,16 @@ public class Conta {
     private String tipo;
     private float valor;
     private boolean Disabled;
+    private String Responsavel;
 
     //Contrutor da Conta padrão
-    public Conta(String descricao, Date dataVencimento, Date dataCadastro, String nome, float valor) {
+    public Conta(String descricao, Date dataVencimento, Date dataCadastro, String nome, float valor, String tipo) {
         this.dataCadastro = dataCadastro;
         this.dataVencimento = dataVencimento;
         this.descricao = descricao;
         this.nome = nome;
         this.valor = valor;
+        this.tipo = tipo;
     }
 
     // métodos Get/Set
@@ -80,4 +82,21 @@ public class Conta {
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+    public boolean isDisabled() {
+        return Disabled;
+    }
+
+    public void setDisabled(boolean Disabled) {
+        this.Disabled = Disabled;
+    }
+
+    public String getResponsavel() {
+        return Responsavel;
+    }
+
+    public void setResponsavel(String Responsavel) {
+        this.Responsavel = Responsavel;
+    }
+
 }

@@ -7,17 +7,29 @@ import java.util.Date;
  *
  * @author Aline Paludetti de Oliveira
  */
-public class ContaPessoaFisica extends Conta implements InterfaceConta {
+public class ContaPagar extends Conta implements InterfaceConta {
 
-//    String descricao;
-//    DataSistema dataVencimento;
-//    DataSistema dataCadastro;
-//    String nome;
-//    float valor;
-//
-    
-    public ContaPessoaFisica(String descricao, Date dataVencimento, Date dataCadastro, String nome, float valor) {
-        super(descricao, dataVencimento, dataCadastro, nome, valor);
+    private String NotaFiscal;
+    float Preco;
+
+    public ContaPagar(String descricao, Date dataVencimento, Date dataCadastro, String nome, float valor, String tipo) {
+        super(descricao, dataVencimento, dataCadastro, nome, valor, tipo);
+    }
+
+    public float getPreco() {
+        return Preco;
+    }
+
+    public void setPreco(float Preco) {
+        this.Preco = Preco;
+    }
+
+    public String getNotaFiscal() {
+        return NotaFiscal;
+    }
+
+    public void setNotaFiscal(String NotaFiscal) {
+        this.NotaFiscal = NotaFiscal;
     }
 
     @Override
