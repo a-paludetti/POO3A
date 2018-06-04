@@ -118,3 +118,39 @@ public class pessoaDao {
         return listaPesssoa;
 
     }
+
+    public static Pessoa obter(String nome)
+            throws SQLException, Exception {
+
+        String sql = "SELECT * FROM cliente WHERE nome = ? AND disable = ?";
+
+        cn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = cn.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setBoolean(2, false);
+
+            rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+                Pessoa pessoa = new Pessoa();
+
+                pessoa.setNome(rs.getString("nome"));
+                pessoa.setEndereco(rs.getString("endereco"));
+                pessoa.setDescricao(rs.getString("descricao"));
+
+                return pessoa;
+            }
+
+        } finally {
+            ConnectionFactory.closeConnection(cn, stmt, rs);
+        }
+        
+        return null;
+    
+}
+    
+}
+

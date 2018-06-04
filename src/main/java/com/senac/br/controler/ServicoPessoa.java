@@ -5,6 +5,7 @@
  */
 package com.senac.br.controler;
 
+import com.senac.br.DAO.pessoaDao;
 import com.senac.br.Exceptions.pessoaException;
 import com.senac.br.Exceptions.DataSourceException;
 import com.senac.br.model.Pessoa;
@@ -15,8 +16,13 @@ import com.senac.br.model.Pessoa;
  */
 public class ServicoPessoa {
     
-    public static void cadastrarPessoa (Pesssoa pessoa)
-            throws PessoaException, DataSourceException {
+    public static void cadastrarPessoa (Pessoa pessoa)
+            throws pessoaException, DataSourceException {
+        
+        try {
+            
+            pessoaDao.inserir(pessoa);
+        }
         
         
     }
